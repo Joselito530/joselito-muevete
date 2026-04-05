@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Joselito, muevete o muere!"
+            android:textColor="@color/text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ejercicio a realizar"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:paddingBottom="6dp" />
+
+        <Spinner
+            android:id="@+id/spinnerExercise"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/bg_card"
+            android:spinnerMode="dropdown" />
+
+        <View android:layout_width="match_parent" android:layout_height="24dp" />
+
+        <TextView
+            android:id="@+id/tvIntervalLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cada hora"
+            android:textColor="@color/accent"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="8dp" />
+
+        <SeekBar
+            android:id="@+id/seekInterval"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="21"
+            android:progress="9"
+            android:thumbTint="@color/accent"
+            android:progressTint="@color/accent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="4dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="15 min"
+                android:textColor="@color/text_secondary" android:textSize="11sp" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="2 h"
+                android:textColor="@color/text_secondary" android:textSize="11sp"
+                android:gravity="end" />
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horario de avisos"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:paddingBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvStartTime"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Inicio: 08:00"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:background="@color/bg_card"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tvEndTime"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Fin: 22:00"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:background="@color/bg_card" />
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de aviso"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:paddingBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/bg_card"
+            android:padding="12dp">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:text="Sonido"
+                    android:textColor="@color/text_primary" android:textSize="15sp" />
+                <Switch android:id="@+id/switchSound" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:checked="true"
+                    android:thumbTint="@color/accent" android:trackTint="@color/bg_dark" />
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/bg_dark" android:layout_marginVertical="8dp" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:text="Vibracion"
+                    android:textColor="@color/text_primary" android:textSize="15sp" />
+                <Switch android:id="@+id/switchVibration" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:checked="true"
+                    android:thumbTint="@color/accent" android:trackTint="@color/bg_dark" />
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/bg_dark" android:layout_marginVertical="8dp" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:text="Pantalla emergente"
+                    android:textColor="@color/text_primary" android:textSize="15sp" />
+                <Switch android:id="@+id/switchOverlay" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:checked="true"
+                    android:thumbTint="@color/accent" android:trackTint="@color/bg_dark" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="32dp" />
+
+        <Button
+            android:id="@+id/btnToggle"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="ACTIVAR"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:background="@color/color_start" />
+
+    </LinearLayout>
+</ScrollView>
