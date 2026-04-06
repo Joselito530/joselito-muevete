@@ -8,52 +8,41 @@ object ExerciseManager {
 
     private const val PREFS_NAME = "joselito_prefs"
     private const val KEY_EXERCISES = "exercises"
-    private const val KEY_SELECTED = "selected_exercise_index"
+    private const val KEY_CURRENT_INDEX = "current_exercise_index"
 
     val defaultExercises = listOf(
-        "10 sentadillas",
-        "10 flexiones",
-        "30 seg plancha",
-        "20 elevaciones de talon",
-        "10 zancadas",
-        "Estiramiento cervical 1 min",
-        "Rotacion de hombros 30 seg",
-        "10 abdominales",
-        "Caminar 2 minutos",
-        "Respiracion profunda 1 min"
+        "10 sentadillas", "10 flexiones", "30 seg plancha",
+        "20 elevaciones de talon", "10 zancadas",
+        "Estiramiento cervical 1 min", "Rotacion de hombros 30 seg",
+        "10 abdominales", "Caminar 2 minutos", "Respiracion profunda 1 min"
     )
 
     fun getExercises(context: Context): MutableList<String> {
-        val prefs = getPrefs(context)
-        val json = prefs.getString(KEY_EXERCISES, null)
+        val json = getPrefs(context).getString(KEY_EXERCISES, null)
         return if (json != null) {
-            val arr = JSONArray(json)
-            MutableList(arr.length()) { arr.getString(it) }
-        } else {
-            defaultExercises.toMutableList()
-        }
+            val arr = JSONArray(json); MutableList(arr.length()) { arr.getString(it) }
+        } else defaultExercises.toMutableList()
     }
 
     fun saveExercises(context: Context, exercises: List<String>) {
-        val arr = JSONArray(exercises)
-        getPrefs(context).edit().putString(KEY_EXERCISES, arr.toString()).apply()
+        getPrefs(context).edit().putString(KEY_EXERCISES, JSONArray(exercises).toString()).apply()
     }
 
-    fun getSelectedIndex(context: Context): Int {
-        return getPrefs(context).getInt(KEY_SELECTED, 0)
-    }
+    fun getCurrentIndex(context: Context) = getPrefs(context).getInt(KEY_CURRENT_INDEX, 0)
 
-    fun setSelectedIndex(context: Context, index: Int) {
-        getPrefs(context).edit().putInt(KEY_SELECTED, index).apply()
-    }
-
-    fun getSelectedExercise(context: Context): String {
+    fun getCurrentExercise(context: Context): String {
         val exercises = getExercises(context)
-        val index = getSelectedIndex(context).coerceIn(0, exercises.size - 1)
-        return exercises[index]
+        if (exercises.isEmpty()) return "Sin ejercicios"
+        return exercises[getCurrentIndex(context).coerceIn(0, exercises.size - 1)]
     }
 
-    private fun getPrefs(context: Context): SharedPreferences {
-        return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    fun advanceToNext(context: Context) {
+        val exercises = getExercises(context)
+        if (exercises.isEmpty()) return
+        val next = (getCurrentIndex(context) + 1) % exercises.size
+        getPrefs(context).edit().putInt(KEY_CURRENT_INDEX, next).apply()
     }
+
+    private fun getPrefs(context: Context): SharedPreferences =
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 }

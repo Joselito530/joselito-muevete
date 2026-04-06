@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/bg_dark" android:padding="16dp">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Lista de ejercicios" android:textColor="@color/accent"
+        android:textSize="18sp" android:textStyle="bold" android:gravity="center"
+        android:paddingBottom="8dp" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Toca para editar. Manten pulsado para eliminar."
+        android:textColor="@color/text_secondary" android:textSize="12sp"
+        android:gravity="center" android:paddingBottom="12dp" />
+    <ListView android:id="@+id/listExercises" android:layout_width="match_parent"
+        android:layout_height="0dp" android:layout_weight="1"
+        android:divider="@color/bg_card" android:dividerHeight="1dp" />
+    <Button android:id="@+id/btnAddExercise" android:layout_width="match_parent"
+        android:layout_height="48dp" android:text="+ Anadir ejercicio"
+        android:textColor="@color/white" android:textSize="15sp"
+        android:background="@color/color_start" android:layout_marginTop="8dp" />
+    <Button android:id="@+id/btnBack" android:layout_width="match_parent"
+        android:layout_height="48dp" android:text="Guardar y volver"
+        android:textColor="@color/text_secondary" android:textSize="15sp"
+        android:background="@color/bg_card" android:layout_marginTop="8dp" />
+</LinearLayout>
