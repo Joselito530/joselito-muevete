@@ -53,6 +53,15 @@ object AlarmScheduler {
         return null
     }
 
+    fun snooze(context: Context, minutes: Int = 5) {
+        val triggerAt = System.currentTimeMillis() + minutes * 60 * 1000L
+        val intent = Intent(context, AlarmReceiver::class.java)
+        val pi = PendingIntent.getBroadcast(context, REQUEST_CODE, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        (context.getSystemService(Context.ALARM_SERVICE) as AlarmManager)
+            .setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAt, pi)
+    }
+
     fun cancel(context: Context) {
         getPrefs(context).edit().remove("next_alarm_time").apply()
         val pi = PendingIntent.getBroadcast(context, REQUEST_CODE,
